@@ -2,8 +2,8 @@ cmake_minimum_required(VERSION 2.8)
 project(DBoW2)
 include(ExternalProject)
 
-option(BUILD_DBoW2   "Build DBoW2"            ON)
-option(BUILD_Demo    "Build demo application" ON)
+option(BUILD_DBoW2   "Build DBoW2"            OFF)
+option(BUILD_Demo    "Build demo application" OFF)
 
 if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
   set(CMAKE_BUILD_TYPE Release CACHE STRING "Choose the type of build." FORCE)
@@ -51,7 +51,7 @@ else(${DLib_FOUND})
   if(${DOWNLOAD_DLib_dependency})
     ExternalProject_Add(DLib
       PREFIX ${DEPENDENCY_DIR}
-      GIT_REPOSITORY http://github.com/dorian3d/DLib
+      GIT_REPOSITORY http://github.com/jpablomch/DLib
       GIT_TAG v1.1-nonfree
       INSTALL_DIR ${DEPENDENCY_INSTALL_DIR}
       CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=<INSTALL_DIR>)
