@@ -2,8 +2,14 @@ cmake_minimum_required(VERSION 2.8)
 project(DBoW2)
 include(ExternalProject)
 
-option(BUILD_DBoW2   "Build DBoW2"            OFF)
-option(BUILD_Demo    "Build demo application" OFF)
+option(BUILD_DBoW2   "Build DBoW2"            ON)
+option(BUILD_Demo    "Build demo application" ON)
+
+####### OUTPUT DIR #######
+SET(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin)
+SET(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin)
+SET(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/lib)
+
 
 if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
   set(CMAKE_BUILD_TYPE Release CACHE STRING "Choose the type of build." FORCE)
