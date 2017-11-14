@@ -4,6 +4,7 @@ include(ExternalProject)
 
 option(BUILD_DBoW2   "Build DBoW2"            ON)
 option(BUILD_Demo    "Build demo application" ON)
+option(BUILD_CollaborativePR "Build collaborativePR score" ON)
 
 ####### OUTPUT DIR #######
 SET(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin)
@@ -79,6 +80,11 @@ if(BUILD_Demo)
   target_link_libraries(demo ${PROJECT_NAME} ${OpenCV_LIBS} ${DLib_LIBS})
   file(COPY demo/images DESTINATION ${CMAKE_BINARY_DIR}/)
 endif(BUILD_Demo)
+
+if(BUILD_CollaborativePR)
+  add_executable(collaborativePR collaborativePR/collaborativePR.cpp)
+  target_link_libraries(collaborativePR ${PROJECT_NAME} ${OpenCV_LIBS} ${DLib_LIBS})
+endif(BUILD_CollaborativePR)
 
 configure_file(src/DBoW2.cmake.in
   "${PROJECT_BINARY_DIR}/DBoW2Config.cmake" @ONLY)
